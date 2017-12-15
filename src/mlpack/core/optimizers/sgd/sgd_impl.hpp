@@ -66,6 +66,8 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
   if (resetPolicy)
     updatePolicy.Initialize(iterate.n_rows, iterate.n_cols);
 
+  unsigned int numIterationsUnderTolerance = 10;
+  
   // Now iterate!
   arma::mat gradient(iterate.n_rows, iterate.n_cols);
   const size_t actualMaxIterations = (maxIterations == 0) ?
@@ -88,11 +90,13 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
 
       if (std::abs(lastObjective - overallObjective) < tolerance)
       {
-        Log::Info << "SGD: minimized within tolerance " << tolerance << "; "
-            << "terminating optimization." << std::endl;
-        return overallObjective;
+        if (--numIterationsUnderTolerance == 0) {
+          Log::Info << "SGD: minimized within tolerance " << tolerance << "; "
+              << "terminating optimization." << std::endl;
+          return overallObjective;
+        }
       }
-
+      numIterationsUnderTolerance = 10;
       // Reset the counter variables.
       lastObjective = overallObjective;
       overallObjective = 0;
