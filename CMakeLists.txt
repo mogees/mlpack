@@ -20,6 +20,7 @@ option(MATHJAX
 option(FORCE_CXX11
     "Don't check that the compiler supports C++11, just assume it.  Make sure to specify any necessary flag to enable C++11 as part of CXXFLAGS."
     OFF)
+option(BUILD_PKG_CONFIG_FILE "build pkg-config file" OFF)
 enable_testing()
 
 # Ensure that we have a C++11 compiler.  In newer versions of CMake, this is
@@ -306,8 +307,8 @@ if (MSVC)
   set(Boost_LIBRARIES "")
 endif ()
 
-set(MLPACK_INCLUDE_DIRS ${MLPACK_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
-set(MLPACK_LIBRARIES ${MLPACK_LIBRARIES} ${Boost_LIBRARIES})
+set(MLPACK_INCLUDE_DIRS ${MLPACK_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} CACHE STRING "mlpack include directories")
+set(MLPACK_LIBRARIES ${MLPACK_LIBRARIES} ${Boost_LIBRARIES} CACHE STRING "mlpack libraries")
 set(MLPACK_LIBRARY_DIRS ${MLPACK_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS})
 
 # For Boost testing framework (will have no effect on non-testing executables).
@@ -516,79 +517,81 @@ if (UNIX)
   endif ()
 endif ()
 
-# Create the pkg-config file, if we have pkg-config.
-find_package(PkgConfig)
-if (PKG_CONFIG_FOUND)
-  # mlpack.pc must be generated as a separate target, otherwise it is possible
-  # that the given version could be out of date.  We don't need to worry about
-  # the library or include directories changing, because CMake will re-run this
-  # portion of the code whenever any of those changes.  But the version must be
-  # re-extracted every time the library is built.
+if (BUILD_PKG_CONFIG_FILE)
+  # Create the pkg-config file, if we have pkg-config.
+  find_package(PkgConfig)
+  if (PKG_CONFIG_FOUND)
+    # mlpack.pc must be generated as a separate target, otherwise it is possible
+    # that the given version could be out of date.  We don't need to worry about
+    # the library or include directories changing, because CMake will re-run this
+    # portion of the code whenever any of those changes.  But the version must be
+    # re-extracted every time the library is built.
 
-  # So, we have to parse our list of library directories, libraries, and include
-  # directories in order to get the correct line to give to pkg-config.
-  # Next, adapt the list of include directories.
-  foreach (incldir ${MLPACK_INCLUDE_DIRS})
-    # Filter out some obviously unnecessary directories.
-    if (NOT "${incldir}" STREQUAL "/usr/include")
-      set(MLPACK_INCLUDE_DIRS_STRING "${MLPACK_INCLUDE_DIRS_STRING}
-          -I${incldir}")
-    endif ()
-  endforeach ()
-  # Add the install directory too.
-  set(MLPACK_INCLUDE_DIRS_STRING
-      "${MLPACK_INCLUDE_DIRS_STRING} -I${CMAKE_INSTALL_PREFIX}/include/")
+    # So, we have to parse our list of library directories, libraries, and include
+    # directories in order to get the correct line to give to pkg-config.
+    # Next, adapt the list of include directories.
+    foreach (incldir ${MLPACK_INCLUDE_DIRS})
+      # Filter out some obviously unnecessary directories.
+      if (NOT "${incldir}" STREQUAL "/usr/include")
+        set(MLPACK_INCLUDE_DIRS_STRING "${MLPACK_INCLUDE_DIRS_STRING}
+            -I${incldir}")
+      endif ()
+    endforeach ()
+    # Add the install directory too.
+    set(MLPACK_INCLUDE_DIRS_STRING
+        "${MLPACK_INCLUDE_DIRS_STRING} -I${CMAKE_INSTALL_PREFIX}/include/")
 
-  # Create the list of link directories.
-  set(MLPACK_LIBRARIES_LIST)
-  foreach (linkdir ${MLPACK_LIBRARY_DIRS})
-    list(APPEND MLPACK_LIBRARIES_LIST "-L${linkdir}")
-  endforeach ()
+    # Create the list of link directories.
+    set(MLPACK_LIBRARIES_LIST)
+    foreach (linkdir ${MLPACK_LIBRARY_DIRS})
+      list(APPEND MLPACK_LIBRARIES_LIST "-L${linkdir}")
+    endforeach ()
 
-  foreach(lib ${MLPACK_LIBRARIES})
-    string(SUBSTRING "${lib}" 0 1 first)
-    if ("${first}" STREQUAL "/")
-      # We need to split the directory and the library.
-      string(REGEX REPLACE "(.*/)[^/]*$" "\\1" library_dir "${lib}")
-      string(REGEX REPLACE ".*/lib([^/]*).so.*$" "\\1" library_name "${lib}")
+    foreach(lib ${MLPACK_LIBRARIES})
+      string(SUBSTRING "${lib}" 0 1 first)
+      if ("${first}" STREQUAL "/")
+        # We need to split the directory and the library.
+        string(REGEX REPLACE "(.*/)[^/]*$" "\\1" library_dir "${lib}")
+        string(REGEX REPLACE ".*/lib([^/]*).so.*$" "\\1" library_name "${lib}")
 
-      list(APPEND MLPACK_LIBRARIES_LIST "-L${library_dir}")
-      list(APPEND MLPACK_LIBRARIES_LIST "-l${library_name}")
-    else ()
-      list(APPEND MLPACK_LIBRARIES_LIST "-l${lib}")
-    endif ()
-  endforeach ()
-  # Don't forget to add mlpack as a dependency too.
-  list(APPEND MLPACK_LIBRARIES_LIST "-L${CMAKE_INSTALL_PREFIX}/lib/")
-  list(APPEND MLPACK_LIBRARIES_LIST "-lmlpack")
+        list(APPEND MLPACK_LIBRARIES_LIST "-L${library_dir}")
+        list(APPEND MLPACK_LIBRARIES_LIST "-l${library_name}")
+      else ()
+        list(APPEND MLPACK_LIBRARIES_LIST "-l${lib}")
+      endif ()
+    endforeach ()
+    # Don't forget to add mlpack as a dependency too.
+    list(APPEND MLPACK_LIBRARIES_LIST "-L${CMAKE_INSTALL_PREFIX}/lib/")
+    list(APPEND MLPACK_LIBRARIES_LIST "-lmlpack")
 
-  # Filter duplicate dependencies and directories.
-  list(REMOVE_DUPLICATES MLPACK_LIBRARIES_LIST)
+    # Filter duplicate dependencies and directories.
+    list(REMOVE_DUPLICATES MLPACK_LIBRARIES_LIST)
 
-  # Filter out known unnecessary directories.
-  list(REMOVE_ITEM MLPACK_LIBRARIES_LIST
-      "-L/usr/lib"
-      "-L/usr/lib/"
-      "-L/usr/lib/x86_64-linux-gnu"
-      "-L/usr/lib/x86_64-linux-gnu/"
-      "-L/usr/lib/i386-linux-gnu"
-      "-L/usr/lib/i386-linux-gnu/")
+    # Filter out known unnecessary directories.
+    list(REMOVE_ITEM MLPACK_LIBRARIES_LIST
+        "-L/usr/lib"
+        "-L/usr/lib/"
+        "-L/usr/lib/x86_64-linux-gnu"
+        "-L/usr/lib/x86_64-linux-gnu/"
+        "-L/usr/lib/i386-linux-gnu"
+        "-L/usr/lib/i386-linux-gnu/")
 
-  string(REPLACE ";" " " MLPACK_LIBRARIES_STRING "${MLPACK_LIBRARIES_LIST}")
+    string(REPLACE ";" " " MLPACK_LIBRARIES_STRING "${MLPACK_LIBRARIES_LIST}")
 
-  # Do first stage of configuration.
-  set(MLPACK_VERSION_STRING "@MLPACK_VERSION_STRING@")
-  configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/CMake/mlpack.pc.in
-    ${CMAKE_BINARY_DIR}/CMake/mlpack.pc.in.partial @ONLY)
+    # Do first stage of configuration.
+    set(MLPACK_VERSION_STRING "@MLPACK_VERSION_STRING@")
+    configure_file(
+      ${CMAKE_CURRENT_SOURCE_DIR}/CMake/mlpack.pc.in
+      ${CMAKE_BINARY_DIR}/CMake/mlpack.pc.in.partial @ONLY)
 
-  add_custom_target(pkgconfig ALL
-      ${CMAKE_COMMAND}
-          -P "${CMAKE_CURRENT_SOURCE_DIR}/CMake/GeneratePkgConfig.cmake"
-      DEPENDS mlpack_headers
-      COMMENT "Generating mlpack.pc (pkg-config) file.")
+    add_custom_target(pkgconfig ALL
+        ${CMAKE_COMMAND}
+            -P "${CMAKE_CURRENT_SOURCE_DIR}/CMake/GeneratePkgConfig.cmake"
+        DEPENDS mlpack_headers
+        COMMENT "Generating mlpack.pc (pkg-config) file.")
 
-  # Do we need a different directory?
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/lib/pkgconfig/mlpack.pc
-      DESTINATION lib/pkgconfig/)
-endif ()
+    # Do we need a different directory?
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/lib/pkgconfig/mlpack.pc
+        DESTINATION lib/pkgconfig/)
+  endif ()
+endif()
