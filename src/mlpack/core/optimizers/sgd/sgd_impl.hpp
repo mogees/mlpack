@@ -67,8 +67,6 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
   // Initialize the update policy.
   if (resetPolicy)
     updatePolicy.Initialize(iterate.n_rows, iterate.n_cols);
-
-  unsigned int numIterationsUnderTolerance = 10;
   
   // Now iterate!
   arma::mat gradient(iterate.n_rows, iterate.n_cols);

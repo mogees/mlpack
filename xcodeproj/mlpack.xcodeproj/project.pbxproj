@@ -196,13 +196,6 @@
 			remoteGlobalIDString = 565AD607472740518F8A726A;
 			remoteInfo = ZERO_CHECK;
 		};
-		3F3AF2A1C9054A0C8002F057 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67CEC7FA113F4A4A82547CA5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3280DB1EA7A0466A8843E9D6;
-			remoteInfo = mlpack_gitversion;
-		};
 		44DD16FDE3AE4D5C9E8779C2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 67CEC7FA113F4A4A82547CA5 /* Project object */;
@@ -244,13 +237,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 565AD607472740518F8A726A;
 			remoteInfo = ZERO_CHECK;
-		};
-		D6A35883716046B999D7D6A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67CEC7FA113F4A4A82547CA5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CAAA807776844052B3CDF078;
-			remoteInfo = mlpack_headers;
 		};
 		DD0C707985FD46B480FF1EA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1589,9 +1575,7 @@
 			);
 			dependencies = (
 				881A4490BD504C66BA99DF41 /* PBXTargetDependency */,
-				9D39F2D232D44E1991A8334D /* PBXTargetDependency */,
 				9A1379195FEC4148BF9058B8 /* PBXTargetDependency */,
-				01CF6E860B2F4A76A6573D16 /* PBXTargetDependency */,
 			);
 			name = mlpack;
 			productName = mlpack;
@@ -1817,11 +1801,6 @@
 			target = 565AD607472740518F8A726A /* ZERO_CHECK */;
 			targetProxy = 475E59A9757E468FA9CF3CB1 /* PBXContainerItemProxy */;
 		};
-		01CF6E860B2F4A76A6573D16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CAAA807776844052B3CDF078 /* mlpack_headers */;
-			targetProxy = D6A35883716046B999D7D6A6 /* PBXContainerItemProxy */;
-		};
 		121ECE880F2345FA80802807 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 565AD607472740518F8A726A /* ZERO_CHECK */;
@@ -1866,11 +1845,6 @@
 			isa = PBXTargetDependency;
 			target = 284D32456F4E4710B833DC6E /* mlpack_arma_config */;
 			targetProxy = 239A3086B0FD436F9271C88E /* PBXContainerItemProxy */;
-		};
-		9D39F2D232D44E1991A8334D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3280DB1EA7A0466A8843E9D6 /* mlpack_gitversion */;
-			targetProxy = 3F3AF2A1C9054A0C8002F057 /* PBXContainerItemProxy */;
 		};
 		A2559485CBC7412ABEF53B20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
