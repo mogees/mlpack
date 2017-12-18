@@ -2157,6 +2157,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src",
 					/usr/local/include,
@@ -2336,6 +2337,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src",
 					/usr/local/include,
@@ -2401,6 +2403,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src",
 					/usr/local/include,
@@ -3124,6 +3127,7 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src",
 					/usr/local/include,

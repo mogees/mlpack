@@ -179,11 +179,11 @@ bool XTreeSplit::SplitNonLeafNode(TreeType *tree, std::vector<bool>& relevels)
   ElemType areaOfBestMinOverlapSplit = 0;
   int bestIndexMinOverlapSplit = 0;
 
-  int bestOverlapIndexOnBestAxis = 0;
-  int bestAreaIndexOnBestAxis = 0;
+  size_t bestOverlapIndexOnBestAxis = 0;
+  size_t bestAreaIndexOnBestAxis = 0;
   bool tiedOnOverlap = false;
   bool lowIsBest = true;
-  int bestAxis = 0;
+  size_t bestAxis = 0;
   ElemType bestAxisScore = std::numeric_limits<ElemType>::max();
   ElemType overlapBestOverlapAxis = 0;
   ElemType areaBestOverlapAxis = 0;
