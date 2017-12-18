@@ -62,6 +62,8 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
     overallObjective += function.Evaluate(iterate, i, effectiveBatchSize);
   }
 
+  unsigned int numberOfTimesSameObjective = 10;
+  
   // Initialize the update policy.
   if (resetPolicy)
     updatePolicy.Initialize(iterate.n_rows, iterate.n_cols);
@@ -88,11 +90,15 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
 
       if (std::abs(lastObjective - overallObjective) < tolerance)
       {
-        Log::Info << "SGD: minimized within tolerance " << tolerance << "; "
-            << "terminating optimization." << std::endl;
-        return overallObjective;
+        if (--numberOfTimesSameObjective == 0) {
+          Log::Info << "SGD: minimized within tolerance " << tolerance << "; "
+          << "terminating optimization." << std::endl;
+          return overallObjective;          
+        }
+      } else {
+        numberOfTimesSameObjective = 10;
       }
-
+      
       // Reset the counter variables.
       lastObjective = overallObjective;
       overallObjective = 0;
