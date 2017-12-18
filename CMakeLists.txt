@@ -362,7 +362,7 @@ endif ()
 # version number if necessary.
 find_package(Git)
 set (USING_GIT "NO")
-if (GIT_FOUND)
+if (FALSE)
   # Run 'git rev-parse HEAD' to find out if this is a working copy. If the
   # return code is not 0, then it isn't.
   execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse HEAD
