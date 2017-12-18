@@ -8,9 +8,9 @@ option(PROFILE "Compile with profiling information." OFF)
 option(ARMA_EXTRA_DEBUG "Compile with extra Armadillo debugging symbols." OFF)
 option(MATLAB_BINDINGS "Compile MATLAB bindings if MATLAB is found." OFF)
 option(TEST_VERBOSE "Run test cases with verbose output." OFF)
-option(BUILD_TESTS "Build tests." ON)
-option(BUILD_CLI_EXECUTABLES "Build command-line executables." ON)
-option(BUILD_PYTHON_BINDINGS "Build Python bindings." ON)
+option(BUILD_TESTS "Build tests." OFF)
+option(BUILD_CLI_EXECUTABLES "Build command-line executables." OFF)
+option(BUILD_PYTHON_BINDINGS "Build Python bindings." OFF)
 option(BUILD_SHARED_LIBS
     "Compile shared libraries (if OFF, static libraries are compiled)." ON)
 option(BUILD_WITH_COVERAGE
