@@ -386,6 +386,7 @@ if (FALSE)
   endif ()
 endif ()
 
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/mlpack/core/util/arma_config.hpp")
 # Create a target to generate arma_config.hpp, which is used to warn the user
 # when they are doing something stupid when linking something against mlpack.
 include(CMake/CreateArmaConfigInfo.cmake)
@@ -399,6 +400,7 @@ add_custom_target(mlpack_arma_config ALL
     COMMENT "Updating arma_config.hpp (if necessary)")
 set(MLPACK_SRCS ${MLPACK_SRCS}
     "${CMAKE_CURRENT_SOURCE_DIR}/src/mlpack/core/util/arma_config.hpp")
+ENDIF()
 
 # Recurse into the rest of the project.
 add_subdirectory(src/mlpack)

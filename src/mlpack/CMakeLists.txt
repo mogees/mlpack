@@ -1,11 +1,10 @@
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/..) # mlpack/mlpack_export.hpp
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 # Add core.hpp to list of sources.
 set(MLPACK_SRCS ${MLPACK_SRCS} "${CMAKE_CURRENT_SOURCE_DIR}/core.hpp")
 
 ## Recurse into both core/ and methods/.
 set(DIRS
-  bindings
   core
   methods
 )
@@ -36,7 +35,7 @@ endif ()
 # necessary for global variables (of which there are a few in mlpack).
 set_target_properties(mlpack PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 include(GenerateExportHeader)
-generate_export_header(mlpack EXPORT_FILE_NAME mlpack_export.hpp)
+generate_export_header(mlpack EXPORT_FILE_NAME "${CMAKE_CURRENT_SOURCE_DIR}/mlpack_export.hpp")
 if (NOT BUILD_SHARED_LIBS)
   add_definitions(-DMLPACK_STATIC_DEFINE)
 endif ()
@@ -58,30 +57,6 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   endif()
 endif()
 
-# Collect all header files in the library.
-file(GLOB_RECURSE INCLUDE_H_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.h)
-file(GLOB_RECURSE INCLUDE_HPP_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.hpp)
-set(INCLUDE_FILES ${INCLUDE_H_FILES} ${INCLUDE_HPP_FILES})
-
-# Move all of these header files to <builddir>/include/mlpack/ after the library
-# is built.  First we have to create that directory though.
-add_custom_target(mlpack_headers)
-add_custom_command(TARGET mlpack_headers POST_BUILD
-  COMMENT "Moving header files to include/mlpack/"
-  COMMAND ${CMAKE_COMMAND} ARGS -E
-    make_directory ${CMAKE_BINARY_DIR}/include/mlpack/
-  COMMAND ${CMAKE_COMMAND} ARGS -E
-    copy ${CMAKE_CURRENT_BINARY_DIR}/mlpack_export.hpp
-         ${CMAKE_BINARY_DIR}/include/mlpack)
-
-# Then copy each of the header files over to that directory.
-foreach(incl_file ${INCLUDE_FILES})
-  add_custom_command(TARGET mlpack_headers POST_BUILD
-    COMMAND ${CMAKE_COMMAND} ARGS -E
-      copy ${CMAKE_CURRENT_SOURCE_DIR}/${incl_file}
-           ${CMAKE_BINARY_DIR}/include/mlpack/${incl_file})
-endforeach()
-
 # At install time, we simply install that directory of header files we
 # collected to include/.
 install(DIRECTORY ${CMAKE_BINARY_DIR}/include/mlpack DESTINATION include)
@@ -93,7 +68,6 @@ install(TARGETS mlpack
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 
-add_dependencies(mlpack mlpack_headers)
 
 # If we are building Python bindings, we have to configure setup.py but only
 # after we've recursed into methods/.
