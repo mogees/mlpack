@@ -1,4 +1,4 @@
-# Install script for directory: /Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src/mlpack/core
+# Install script for directory: /Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/src/mlpack/core
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,18 +29,18 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/arma_extend/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/boost_backport/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/cv/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/data/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/dists/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/hpt/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/kernels/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/math/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/metrics/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/tree/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/util/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/arma_extend/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/boost_backport/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/cv/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/data/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/dists/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/hpt/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/kernels/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/math/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/metrics/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/tree/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/util/cmake_install.cmake")
 
 endif()
 

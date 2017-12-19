@@ -2,9 +2,9 @@
 # Custom rules for distclean
 .SUFFIXES: 
 all: \
-	/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/CMakeFiles/distclean
+	/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/CMakeFiles/distclean
 
 
-/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/CMakeFiles/distclean: 
+/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/CMakeFiles/distclean: 
 	echo ""
 	@echo cleaning for source distribution

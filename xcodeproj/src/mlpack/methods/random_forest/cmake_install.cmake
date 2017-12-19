@@ -1,4 +1,4 @@
-# Install script for directory: /Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src/mlpack/methods/random_forest
+# Install script for directory: /Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/src/mlpack/methods/random_forest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

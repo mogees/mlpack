@@ -1,4 +1,4 @@
-# Install script for directory: /Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src/mlpack/core/optimizers
+# Install script for directory: /Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/src/mlpack/core/optimizers
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,23 +29,23 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/ada_delta/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/ada_grad/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/adam/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/aug_lagrangian/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/cne/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/fw/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/gradient_descent/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/grid_search/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/lbfgs/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/line_search/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/proximal/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/rmsprop/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/sa/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/sdp/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/sgd/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/smorms3/cmake_install.cmake")
-  include("/Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/spalera_sgd/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/ada_delta/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/ada_grad/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/adam/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/aug_lagrangian/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/cne/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/fw/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/gradient_descent/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/grid_search/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/lbfgs/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/line_search/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/proximal/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/rmsprop/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/sa/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/sdp/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/sgd/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/smorms3/cmake_install.cmake")
+  include("/Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/xcodeproj/src/mlpack/core/optimizers/spalera_sgd/cmake_install.cmake")
 
 endif()
 

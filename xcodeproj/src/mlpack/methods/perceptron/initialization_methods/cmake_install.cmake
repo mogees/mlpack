@@ -1,4 +1,4 @@
-# Install script for directory: /Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src/mlpack/methods/perceptron/initialization_methods
+# Install script for directory: /Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/src/mlpack/methods/perceptron/initialization_methods
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

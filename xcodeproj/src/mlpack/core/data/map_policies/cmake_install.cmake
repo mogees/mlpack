@@ -1,4 +1,4 @@
-# Install script for directory: /Users/alex/Documents/development/mogees/mogees-lib2-tools-mlpack/thirdParty/mogees-mlpack/src/mlpack/core/data/map_policies
+# Install script for directory: /Users/alex/Documents/development/mogees/mogees-tools/thirdParty/mogees-mlpack/src/mlpack/core/data/map_policies
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
