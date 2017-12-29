@@ -20,30 +20,29 @@
 namespace mlpack {
 namespace optimization {
 
-template<typename UpdatePolicyType, typename DecayPolicyType>
-SGD<UpdatePolicyType, DecayPolicyType>::SGD(
+template<typename UpdatePolicyType, typename DecayPolicyType, typename TerminationPolicyType>
+SGD<UpdatePolicyType, DecayPolicyType, TerminationPolicyType>::SGD(
     const double stepSize,
     const size_t batchSize,
-    const size_t maxIterations,
-    const double tolerance,
     const bool shuffle,
     const UpdatePolicyType& updatePolicy,
     const DecayPolicyType& decayPolicy,
-    const bool resetPolicy) :
+    const TerminationPolicyType& terminationPolicy,
+    const bool resetUpdatePolicy) :
     stepSize(stepSize),
     batchSize(batchSize),
-    maxIterations(maxIterations),
-    tolerance(tolerance),
     shuffle(shuffle),
     updatePolicy(updatePolicy),
     decayPolicy(decayPolicy),
-    resetPolicy(resetPolicy)
+    terminationPolicy(terminationPolicy),
+    resetUpdatePolicy(resetUpdatePolicy),
+    overallObjective(0.0)
 { /* Nothing to do. */ }
 
 //! Optimize the function (minimize).
-template<typename UpdatePolicyType, typename DecayPolicyType>
+template<typename UpdatePolicyType, typename DecayPolicyType, typename TerminationPolicyType>
 template<typename DecomposableFunctionType>
-double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
+double SGD<UpdatePolicyType, DecayPolicyType, TerminationPolicyType>::Optimize(
     DecomposableFunctionType& function,
     arma::mat& iterate)
 {
@@ -52,8 +51,7 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
 
   // To keep track of where we are and how things are going.
   size_t currentFunction = 0;
-  double overallObjective = 0;
-  double lastObjective = DBL_MAX;
+  overallObjective = 0;
 
   // Calculate the first objective function.
   for (size_t i = 0; i < numFunctions; i += batchSize)
@@ -61,46 +59,27 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
     const size_t effectiveBatchSize = std::min(batchSize, numFunctions - i);
     overallObjective += function.Evaluate(iterate, i, effectiveBatchSize);
   }
-
-  unsigned int numberOfTimesSameObjective = 10;
   
   // Initialize the update policy.
-  if (resetPolicy)
+  if (resetUpdatePolicy)
     updatePolicy.Initialize(iterate.n_rows, iterate.n_cols);
   
   // Now iterate!
   arma::mat gradient(iterate.n_rows, iterate.n_cols);
-  const size_t actualMaxIterations = (maxIterations == 0) ?
-      std::numeric_limits<size_t>::max() : maxIterations;
-  for (size_t i = 0; i < actualMaxIterations; /* incrementing done manually */)
+  size_t currentIteration = 0;
+  while (true)
   {
     // Is this iteration the start of a sequence?
     if ((currentFunction % numFunctions) == 0)
     {
       // Output current objective function.
-      Log::Info << "SGD: iteration " << i << ", objective " << overallObjective
+      Log::Info << "SGD: iteration " << currentIteration << ", objective " << overallObjective
           << "." << std::endl;
-
-      if (std::isnan(overallObjective) || std::isinf(overallObjective))
-      {
-        Log::Warn << "SGD: converged to " << overallObjective << "; terminating"
-            << " with failure.  Try a smaller step size?" << std::endl;
-        return overallObjective;
-      }
-
-      if (std::abs(lastObjective - overallObjective) < tolerance)
-      {
-        if (--numberOfTimesSameObjective == 0) {
-          Log::Info << "SGD: minimized within tolerance " << tolerance << "; "
-          << "terminating optimization." << std::endl;
-          return overallObjective;          
-        }
-      } else {
-        numberOfTimesSameObjective = 10;
+      
+      if (terminationPolicy.Converged(function, currentIteration, overallObjective)) {
+        break;
       }
       
-      // Reset the counter variables.
-      lastObjective = overallObjective;
       overallObjective = 0;
       currentFunction = 0;
 
@@ -123,12 +102,9 @@ double SGD<UpdatePolicyType, DecayPolicyType>::Optimize(
     // Now update the learning rate if requested by the user.
     decayPolicy.Update(iterate, stepSize, gradient);
 
-    i += effectiveBatchSize;
+    currentIteration += effectiveBatchSize;
     currentFunction += effectiveBatchSize;
   }
-
-  Log::Info << "SGD: maximum iterations (" << maxIterations << ") reached; "
-      << "terminating optimization." << std::endl;
 
   // Calculate final objective.
   overallObjective = 0;

@@ -22,10 +22,10 @@ SMORMS3::SMORMS3(const double stepSize,
                  const bool shuffle) :
     optimizer(stepSize,
               batchSize,
-              maxIterations,
-              tolerance,
               shuffle,
-              SMORMS3Update(epsilon))
+              SMORMS3Update(epsilon),
+              NoDecay(),
+              DefaultTermination(maxIterations, tolerance))
 { /* Nothing to do. */ }
 
 } // namespace optimization

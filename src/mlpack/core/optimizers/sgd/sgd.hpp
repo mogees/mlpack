@@ -18,6 +18,7 @@
 #include "update_policies/vanilla_update.hpp"
 #include "update_policies/momentum_update.hpp"
 #include "decay_policies/no_decay.hpp"
+#include "termination_policies/default_termination.hpp"
 
 namespace mlpack {
 namespace optimization {
@@ -80,7 +81,8 @@ namespace optimization {
  *     be adjusted (i.e. NoDecay is used).
  */
 template<typename UpdatePolicyType = VanillaUpdate,
-         typename DecayPolicyType = NoDecay>
+         typename DecayPolicyType = NoDecay,
+         typename TerminationPolicyType = DefaultTermination>
 class SGD
 {
  public:
@@ -107,11 +109,10 @@ class SGD
    */
   SGD(const double stepSize = 0.01,
       const size_t batchSize = 32,
-      const size_t maxIterations = 100000,
-      const double tolerance = 1e-5,
       const bool shuffle = true,
       const UpdatePolicyType& updatePolicy = UpdatePolicyType(),
       const DecayPolicyType& decayPolicy = DecayPolicyType(),
+      const TerminationPolicyType& terminationPolicy = DefaultTermination(100000, 1e-5),
       const bool resetPolicy = true);
 
   /**
@@ -155,10 +156,10 @@ class SGD
 
   //! Get whether or not the update policy parameters
   //! are reset before Optimize call.
-  bool ResetPolicy() const { return resetPolicy; }
+  bool ResetUpdatePolicy() const { return resetUpdatePolicy; }
   //! Modify whether or not the update policy parameters
   //! are reset before Optimize call.
-  bool& ResetPolicy() { return resetPolicy; }
+  bool& ResetUpdatePolicy() { return resetUpdatePolicy; }
 
   //! Get the update policy.
   const UpdatePolicyType& UpdatePolicy() const { return updatePolicy; }
@@ -169,6 +170,9 @@ class SGD
   const DecayPolicyType& DecayPolicy() const { return decayPolicy; }
   //! Modify the step size decay policy.
   DecayPolicyType& DecayPolicy() { return decayPolicy; }
+  
+  //! Returns the current loss
+  double currentObjective() const { return overallObjective; }
 
  private:
   //! The step size for each example.
@@ -193,9 +197,15 @@ class SGD
   //! The decay policy used to update the step size.
   DecayPolicyType decayPolicy;
 
+  //! The termination policy used to decide when to end the algorhithm
+  TerminationPolicyType terminationPolicy;
+  
   //! Flag indicating whether update policy
   //! should be reset before running optimization.
-  bool resetPolicy;
+  bool resetUpdatePolicy;
+  
+  //! The current loss, updated at each iteration
+  double overallObjective;
 };
 
 using StandardSGD = SGD<VanillaUpdate>;

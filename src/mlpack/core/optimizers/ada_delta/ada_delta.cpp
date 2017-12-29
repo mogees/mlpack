@@ -26,10 +26,10 @@ AdaDelta::AdaDelta(const double stepSize,
                    const bool shuffle) :
     optimizer(stepSize,
               batchSize,
-              maxIterations,
-              tolerance,
               shuffle,
-              AdaDeltaUpdate(rho, epsilon))
+              AdaDeltaUpdate(rho, epsilon),
+              NoDecay(),
+              DefaultTermination(maxIterations, tolerance))
 { /* Nothing to do. */ }
 
 } // namespace optimization

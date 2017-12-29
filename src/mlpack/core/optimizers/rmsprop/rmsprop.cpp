@@ -26,10 +26,10 @@ RMSProp::RMSProp(const double stepSize,
                  const bool shuffle) :
     optimizer(stepSize,
               batchSize,
-              maxIterations,
-              tolerance,
               shuffle,
-              RMSPropUpdate(epsilon, alpha))
+              RMSPropUpdate(epsilon, alpha),
+              NoDecay(),
+              DefaultTermination(maxIterations, tolerance))
 { /* Nothing to do. */ }
 
 } // namespace optimization
