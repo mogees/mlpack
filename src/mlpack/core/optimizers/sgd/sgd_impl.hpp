@@ -72,14 +72,10 @@ double SGD<UpdatePolicyType, DecayPolicyType, TerminationPolicyType>::Optimize(
     // Is this iteration the start of a sequence?
     if ((currentFunction % numFunctions) == 0)
     {
-      // Output current objective function.
-      Log::Info << "SGD: iteration " << currentIteration << ", objective " << overallObjective
-          << "." << std::endl;
-      
       if (terminationPolicy.Converged(function, currentIteration, overallObjective)) {
         break;
       }
-      
+
       overallObjective = 0;
       currentFunction = 0;
 

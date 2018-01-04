@@ -39,6 +39,9 @@ class DefaultTermination
   template<typename DecomposableFunctionType>
   bool Converged(DecomposableFunctionType& function, size_t currentIteration, double currentObjective)
   {
+    // Output current objective function.
+    Log::Info << "SGD: iteration " << currentIteration << ", objective " << currentObjective << "." << std::endl;
+    
     if (maxIterations && currentIteration >= maxIterations) {
       Log::Info << "SGD: returned after " << maxIterations << "; "
       << " iterations." << std::endl;
