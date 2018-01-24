@@ -15,10 +15,10 @@
 #define MLPACK_CORE_OPTIMIZERS_SGD_SGD_HPP
 
 #include <mlpack/prereqs.hpp>
-#include "update_policies/vanilla_update.hpp"
-#include "update_policies/momentum_update.hpp"
-#include "decay_policies/no_decay.hpp"
-#include "termination_policies/default_termination.hpp"
+#include <mlpack/core/optimizers/sgd/update_policies/vanilla_update.hpp>
+#include <mlpack/core/optimizers/sgd/update_policies/momentum_update.hpp>
+#include <mlpack/core/optimizers/sgd/decay_policies/no_decay.hpp>
+#include <mlpack/core/optimizers/sgd/termination_policies/default_termination.hpp>
 
 namespace mlpack {
 namespace optimization {
