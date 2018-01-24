@@ -181,8 +181,8 @@ void RTreeSplit::GetPointSeeds(const TreeType *tree, int& iRet, int& jRet)
       if (score > worstPairScore)
       {
         worstPairScore = score;
-        iRet = i;
-        jRet = j;
+        iRet = (int)i;
+        jRet = (int)j;
       }
     }
   }
@@ -216,8 +216,8 @@ void RTreeSplit::GetBoundSeeds(const TreeType *tree, int& iRet, int& jRet)
       if (score > worstPairScore)
       {
         worstPairScore = score;
-        iRet = i;
-        jRet = j;
+        iRet = (int)i;
+        jRet = (int)j;
       }
     }
   }
@@ -312,7 +312,7 @@ void RTreeSplit::AssignPointDestNode(TreeType* oldTree,
         if (newVolOne - volOne < bestScore)
         {
           bestScore = newVolOne - volOne;
-          bestIndex = index;
+          bestIndex = (int)index;
           bestRect = 1;
         }
       }
@@ -321,7 +321,7 @@ void RTreeSplit::AssignPointDestNode(TreeType* oldTree,
         if (newVolTwo - volTwo < bestScore)
         {
           bestScore = newVolTwo - volTwo;
-          bestIndex = index;
+          bestIndex = (int)index;
           bestRect = 2;
         }
       }
@@ -459,7 +459,7 @@ void RTreeSplit::AssignNodeDestNode(TreeType* oldTree,
         if (newVolOne - volOne < bestScore)
         {
           bestScore = newVolOne - volOne;
-          bestIndex = index;
+          bestIndex = (int)index;
           bestRect = 1;
         }
       }
@@ -468,7 +468,7 @@ void RTreeSplit::AssignNodeDestNode(TreeType* oldTree,
         if (newVolTwo - volTwo < bestScore)
         {
           bestScore = newVolTwo - volTwo;
-          bestIndex = index;
+          bestIndex = (int)index;
           bestRect = 2;
         }
       }

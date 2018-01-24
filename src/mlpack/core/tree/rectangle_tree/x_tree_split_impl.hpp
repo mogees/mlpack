@@ -288,7 +288,7 @@ bool XTreeSplit::SplitNonLeafNode(TreeType *tree, std::vector<bool>& relevels)
         if (overlapedAreas[i] < bestScoreMinOverlapSplit)
         {
           bestScoreMinOverlapSplit = overlapedAreas[i];
-          bestIndexMinOverlapSplit = i;
+          bestIndexMinOverlapSplit = (int)i;
           areaOfBestMinOverlapSplit = areas[i];
         }
       }
@@ -396,7 +396,7 @@ bool XTreeSplit::SplitNonLeafNode(TreeType *tree, std::vector<bool>& relevels)
         {
           minOverlapSplitUsesHi = true;
           bestScoreMinOverlapSplit = overlapedAreas[i];
-          bestIndexMinOverlapSplit = i;
+          bestIndexMinOverlapSplit = (int)i;
           areaOfBestMinOverlapSplit = areas[i];
         }
       }
