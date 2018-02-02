@@ -261,7 +261,7 @@ class FFN
   /**
    * Returns the number of layers in this network
    */
-  size_t getNumberOfLayers() const { return network.size(); }
+  size_t NetworkSize() const { return network.size(); }
   
   /**
    * Returns the layer of this network at the given index
