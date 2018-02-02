@@ -49,12 +49,12 @@ inline size_t RTreeDescentHeuristic::ChooseDescentNode(const TreeType* node,
     {
       minScore = v2 - v1;
       bestVol = v1;
-      bestIndex = i;
+      bestIndex = (int)i;
     }
     else if ((v2 - v1) == minScore && v1 < bestVol)
     {
       bestVol = v1;
-      bestIndex = i;
+      bestIndex = (int)i;
     }
   }
 
@@ -96,12 +96,12 @@ inline size_t RTreeDescentHeuristic::ChooseDescentNode(
     {
       minScore = v2 - v1;
       bestVol = v1;
-      bestIndex = i;
+      bestIndex = (int)i;
     }
     else if ((v2 - v1) == minScore && v1 < bestVol)
     {
       bestVol = v1;
-      bestIndex = i;
+      bestIndex = (int)i;
     }
   }
 

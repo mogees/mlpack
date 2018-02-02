@@ -401,7 +401,7 @@ void NSModel<SortPolicy>::serialize(Archive& ar, const unsigned int version)
   if (Archive::is_loading::value)
     boost::apply_visitor(DeleteVisitor(), nSearch);
 
-  const std::string& name = NSModelName<SortPolicy>::Name();
+  //const std::string& name = NSModelName<SortPolicy>::Name();
   ar & BOOST_SERIALIZATION_NVP(nSearch);
 }
 

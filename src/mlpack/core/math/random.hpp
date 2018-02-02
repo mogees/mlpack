@@ -41,7 +41,7 @@ inline void RandomSeed(const size_t seed)
 {
   randGen.seed((uint32_t) seed);
   srand((unsigned int) seed);
-  arma::arma_rng::set_seed(seed);
+  arma::arma_rng::set_seed((unsigned int)seed);
 }
 
 /**
@@ -120,7 +120,7 @@ inline void ObtainDistinctSamples(const size_t loInclusive,
     samples.zeros(samplesRangeSize);
 
     for (size_t i = 0; i < maxNumSamples; i++)
-      samples [ (size_t) math::RandInt(samplesRangeSize) ]++;
+      samples [ (size_t) math::RandInt((int)samplesRangeSize) ]++;
 
     distinctSamples = arma::find(samples > 0);
 
