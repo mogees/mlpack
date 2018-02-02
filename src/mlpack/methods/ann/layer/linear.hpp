@@ -113,6 +113,11 @@ class Linear
   //! Modify the gradient.
   OutputDataType& Gradient() { return gradient; }
 
+  //! Get the weights.
+  OutputDataType const& Weight() const { return weight; }  
+  //! Get the biases.
+  OutputDataType const& Bias() const { return bias; }
+  
   /**
    * Serialize the layer
    */
