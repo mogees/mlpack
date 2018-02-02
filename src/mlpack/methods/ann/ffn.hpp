@@ -258,11 +258,18 @@ class FFN
    */
   double Backward(arma::mat targets, arma::mat& gradients);
   
+  /**
+   * Returns the number of layers in this network
+   */
+  size_t getNumberOfLayers() const { return network.size(); }
   
-  
-  std::vector<LayerTypes>& getNetwork() {
-    return network;
-  }
+  /**
+   * Returns the layer of this network at the given index
+   *
+   * @param layerIndex The index of the requested layer.
+   */
+  template <typename LayerPtrType>
+  LayerPtrType GetLayer(const size_t layerIndex) const;
 
  private:
   // Helper functions.

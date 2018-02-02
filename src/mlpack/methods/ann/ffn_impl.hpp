@@ -370,6 +370,12 @@ void FFN<OutputLayerType, InitializationRuleType>::Backward()
         network[network.size() - i]))), network[network.size() - i]);
   }
 }
+  
+template<typename OutputLayerType, typename InitializationRuleType>
+template <class LayerPtrType>
+LayerPtrType FFN<OutputLayerType, InitializationRuleType>::GetLayer(const size_t layerIndex) const {
+  return boost::get<LayerPtrType>(network[layerIndex]);
+}
 
 template<typename OutputLayerType, typename InitializationRuleType>
 void FFN<OutputLayerType, InitializationRuleType>::Gradient(arma::mat&& input)
