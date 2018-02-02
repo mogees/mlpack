@@ -257,6 +257,12 @@ class FFN
    * @return Training error of the current pass.
    */
   double Backward(arma::mat targets, arma::mat& gradients);
+  
+  
+  
+  std::vector<LayerTypes>& getNetwork() {
+    return network;
+  }
 
  private:
   // Helper functions.
