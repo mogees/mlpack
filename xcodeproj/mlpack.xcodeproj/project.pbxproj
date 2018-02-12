@@ -2344,7 +2344,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					"/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src",
+					"$(SRCROOT)/src/",
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -2362,7 +2362,7 @@
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "$(SRCROOT)/src/mlpack";
-				USER_HEADER_SEARCH_PATHS = "/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/src/";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -2393,7 +2393,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					"/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src",
+					"$(SRCROOT)/src/",
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -2411,7 +2411,7 @@
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "$(SRCROOT)/src/mlpack";
-				USER_HEADER_SEARCH_PATHS = "/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/src/";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -2581,7 +2581,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					"/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src",
+					"$(SRCROOT)/src/",
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -2599,7 +2599,7 @@
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "$(SRCROOT)/src/mlpack";
-				USER_HEADER_SEARCH_PATHS = "/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/src/";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -2729,7 +2729,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					"/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src",
+					"$(SRCROOT)/src/",
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -2747,7 +2747,7 @@
 				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "$(SRCROOT)/src/mlpack";
-				USER_HEADER_SEARCH_PATHS = "/Volumes/Data/WORK/alsc/Projects/current/mogees/libraries/mogees-tools/thirdParty/mogees-mlpack/src";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/src/";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
 					"-Wmost",
